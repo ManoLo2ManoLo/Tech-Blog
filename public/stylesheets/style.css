@@ -1,0 +1,79 @@
+:root {
+    --dark: #3F3F3F;
+    --pink: #E46A68;
+    --gray: #6E6E6E;
+    --white: #FFFFFF;
+    --black: #040404;
+    
+}
+
+* {
+    font-family: inherit;
+}
+
+body {
+    background-color: var(--dark);
+}
+
+.container {
+    height: 200px;
+    position: relative;
+}
+  
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+ul {
+    list-style: none;
+    color: var(--white)
+}
+
+.margin-top {
+    margin-top: 100px;
+}
+
+.warning {
+    color: var(--pink)
+}
+
+.login-form {
+    border-bottom: var(--gray) solid 1px;
+}
+
+.signup-form {
+    border-bottom: var(--gray) solid 1px;
+}
+
+.input {
+    border: var(--gray) solid 1px;
+    border-radius: 10px;
+    color: var(--gray);
+    padding: 15px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: black;
+    border-radius: 10px;
+    color: var(--white);
+    padding: 15px;
+    font-size: 20px;
+    margin: 20px 0;
+    border-bottom: var(--gray);
+}
+
+.padding-left-0 {
+    padding-left: 0;
+}
+
+.padding-right-0 {
+    padding-right: 0;
+}
+
+
