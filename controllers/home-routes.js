@@ -1,17 +1,17 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Post, Comment } = require('../Models')
-const withAuth = require('../utils/auth.js');
+const { withAuth, withNoAuth } = require('../utils/auth.js');
 
 router.get('/', (req, res) => {
     res.render('homePage');
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', withNoAuth, (req, res) => {
     res.render('login');
 });
 
-router.get('/signup', (req, res) => {
+router.get('/signup', withNoAuth, (req, res) => {
     res.render('signup');
 });
 

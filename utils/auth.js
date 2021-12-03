@@ -5,6 +5,14 @@ const withAuth = (req, res, next) => {
         next();
     }
 };
+
+const withNoAuth = (req, res, next) => {
+    if (req.session.user_id) {
+        res.redirect('/')
+    } else {
+        next();
+    }
+}
   
-module.exports = withAuth;
+module.exports = { withAuth, withNoAuth};
   
