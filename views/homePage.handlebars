@@ -24,6 +24,14 @@
         </div>
         {{/if}}
     </div>
+
+    <div class="col-12 row margin-top">
+        {{#each posts as |post|}}
+            <div class="row">
+                {{post.title}}
+            </div>
+        {{/each}}
+    </div>
 </div>
 
 {{#if loggedIn}}

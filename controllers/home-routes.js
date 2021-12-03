@@ -4,7 +4,24 @@ const { User, Post, Comment } = require('../Models')
 const { withAuth, withNoAuth } = require('../utils/auth.js');
 
 router.get('/', (req, res) => {
-    res.render('homePage');
+    Post.findAll({
+        attributes: {
+            exclude: ['updatedAt']
+        },
+        include: {
+            model: User,
+            attributes: ['first_name', 'last_name', 'username']
+        }
+    })
+    .then(dbPostData => {
+        const posts = dbPostData.map(post => post.get({plain: true}));
+
+        res.render('homePage', {posts})
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 router.get('/login', withNoAuth, (req, res) => {

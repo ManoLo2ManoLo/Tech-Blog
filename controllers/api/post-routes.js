@@ -3,7 +3,15 @@ const { User, Post, Comment } = require('../../Models')
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
-    Post.findAll()
+    Post.findAll({
+        attributes: {
+            exclude: ['updatedAt']
+        },
+        include: {
+            model: User,
+            attributes: ['first_name', 'last_name', 'username']
+        }
+    })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
         console.log(err);
