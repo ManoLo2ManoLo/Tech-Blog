@@ -1,1 +1,31 @@
-<h1>Home Page</h1>
+<div class="row margin-top">
+    <div class="col-12">
+        <div class="row">
+            <center>
+                <div class="col-6">
+                    <h1 class="white-text">Blog Posts:</h1>
+                </div>
+            </center>
+        </div>
+
+        {{#if loggedIn}}
+        <div class="row">
+            <form class="blog_post margin-top">
+                <div class="row">
+                    <input class="input" id="title" placeholder="Blog's Title"></input>
+                </div>
+                <div class="row">
+                    <textarea class="input" cols="5" id="body" placeholder="Blog's Body"></textarea>
+                </div>
+                <div class="row">
+                    <button class="btn" type="submit">Submit Blog</button>
+                </div>
+            </form>
+        </div>
+        {{/if}}
+    </div>
+</div>
+
+{{#if loggedIn}}
+<script src="/javascript/blog_post.js"
+{{/if}}

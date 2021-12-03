@@ -41,11 +41,7 @@ ul {
     color: var(--pink)
 }
 
-.login-form {
-    border-bottom: var(--gray) solid 1px;
-}
-
-.signup-form {
+form {
     border-bottom: var(--gray) solid 1px;
 }
 
@@ -76,4 +72,6 @@ ul {
     padding-right: 0;
 }
 
-
+.white-text {
+    color: white;
+}
