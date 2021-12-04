@@ -10,7 +10,7 @@
 
         {{#if loggedIn}}
         <div class="row">
-            <form class="blog_post margin-top">
+            <form class="blog_post margin-top-sm">
                 <div class="row">
                     <input class="input" id="title" placeholder="Blog's Title"></input>
                 </div>
@@ -25,15 +25,36 @@
         {{/if}}
     </div>
 
-    <div class="col-12 row margin-top">
+    <div class="col-12 margin-top post-section">
         {{#each posts as |post|}}
-            <div class="row">
-                {{post.title}}
+        <div class="row margin-top-sm">
+            <div class="col-12 new-post">
+                <div class="row">
+                    <p class="post-name">{{post.user.first_name}} {{post.user.last_name}} <span class="post-username">@{{post.user.username}}</p>
+                </div>
+                <br>
+                <div class="row">
+                    <p class="post-title">{{post.title}}</p>
+                </div>
+
+                <div class="row">
+                    <p class="post-body">{{post.body}}</p>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-6">
+                    <p class="post-time">Posted On: {{post.createdAt}}</p>
+                    </div>
+                    <div class="col-6 right">
+                        <button class="button">View Comments</button>
+                    </div>
+                </div>
             </div>
+        </div>
         {{/each}}
     </div>
 </div>
 
 {{#if loggedIn}}
-<script src="/javascript/blog_post.js"
+<script src="/javascript/blog_post.js"></script>
 {{/if}}
