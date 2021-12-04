@@ -137,3 +137,8 @@ form {
     display: flex;
     justify-content: flex-end;
 }
+
+.pink {
+    color: var(--pink);
+    background-color: var(--pink);
+}

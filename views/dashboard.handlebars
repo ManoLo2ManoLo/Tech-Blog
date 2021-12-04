@@ -8,7 +8,7 @@
             <h3 class="white-text">@{{user.username}}</h3>
         </div>
 
-        <div class="row margin-top-sm">
+        <div style="display: none;" id="about_me_edit" class="row margin-top-sm">
             <center>
                 <div class="col-9">
                     <form class="row about_me_form">
@@ -20,21 +20,21 @@
             </center>
         </div>
 
-        <div class="row margin-top-sm">
+        <div id="about_me_text" class="row margin-top-sm">
             <center>
                 <div class="col-9">
                     <h4 class="white-text">About Me</h4>
-                    <p>{{user.about_me}}</p>
-                    <button class="button">Edit About Me</button>
+                    <p class=" white-text">{{user.about_me}}</p>
+                    <button id="about_me_button" class="button">Edit About Me</button>
                 </div>
             </center>
         </div>
 
-        <div class="row margin-top-sm">
+        <div style="display: none;" class="row margin-top-sm pink" id="interests_edit">
             <center>
                 <div class="col-9">
                     <form class="row interests_form">
-                        <h4 class="white-text">Interest</h4>
+                        <h4 class="white-text">Interests</h4>
                         <textarea class="input" id="interests" placeholder="{{user.interests}}"></textarea>
                         <button type="submit" class="button">Submit</button>
                     </form>
@@ -42,12 +42,12 @@
             </center>
         </div>
 
-        <div class="row margin-top-sm">
+        <div class="row margin-top-sm" id="interests_text">
             <center>
                 <div class="col-9">
                     <h4 class="white-text">Interest</h4>
-                    <p>{{user.interests}}</p>
-                    <button class="button">Edit Interests</button>
+                    <p class="white-text">{{user.interests}}</p>
+                    <button id="interests_button" class="button">Edit Interests</button>
                 </div>
             </center>
         </div>
@@ -63,7 +63,6 @@
                 </center>
             </div>
 
-            {{#if loggedIn}}
             <div class="row">
                 <form class="blog_post margin-top-sm">
                     <div class="row">
@@ -79,7 +78,6 @@
                     </div>
                 </form>
             </div>
-            {{/if}}
         </div>
 
         <div class="col-12 margin-top post-section">
@@ -94,7 +92,13 @@
             <div class="row margin-top-sm">
                 <div class="col-12 new-post">
                     <div class="row">
-                        <p class="post-title">{{post.title}}</p>
+                        <div class="col-6">
+                            <p class="post-title">{{post.title}}</p>
+                        </div>
+
+                        <div class="col-6 right">
+                            <a class="fas fa-trash-alt" onclick="deletePost('{{post.id}}')"></a>
+                        </div>
                     </div>
 
                     <div class="row">

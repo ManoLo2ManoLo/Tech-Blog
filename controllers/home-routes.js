@@ -40,6 +40,9 @@ router.get('/dashboard', withAuth, (req, res) => {
         include: {
             model: Post,
             attributes: ['id', 'title', 'body', 'createdAt']
+        },
+        where: {
+            id: req.session.user_id
         }
     })
     .then(dbUserData => {
