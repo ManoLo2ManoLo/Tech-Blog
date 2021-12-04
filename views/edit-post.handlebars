@@ -1,0 +1,31 @@
+<div class="row margin-top white-text">
+    <center>
+        <h1>Edit Post</h1>
+    </center>
+</div>
+
+<div class="row margin-top-sm">
+    <form class="col-12 new-post post_form">
+        <div class="row">
+            <label for="title">Blog's Title</label>
+            <textarea name="title" class="input" id="title">{{post.title}}</textarea>
+        </div>
+
+        <div class="row margin-top-sm">
+            <label for="body">Blog's Body</label>
+            <textarea name="body" class="input" cols="5" id="body">{{post.body}}</textarea>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-6">
+                <p class="post-time">Posted On: {{post.createdAt}}</p>
+            </div>
+
+            <div class="col-6 right">
+                <button type="submit" class="button">Submit Changes</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="/javascript/update_post.js"></script>

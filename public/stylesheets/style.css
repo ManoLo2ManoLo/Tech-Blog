@@ -138,7 +138,6 @@ form {
     justify-content: flex-end;
 }
 
-.pink {
-    color: var(--pink);
-    background-color: var(--pink);
+a {
+    text-decoration: none;
 }

@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         },
         include: {
             model: User,
-            attributes: ['first_name', 'last_name', 'username']
+            attributes: ['id', 'first_name', 'last_name', 'username']
         }
     })
     .then((dbPostData) => res.json(dbPostData))
@@ -26,6 +26,31 @@ router.post('/', (req, res) => {
         user_id: req.session.user_id
     })
     .then(dbPostData => res.json(dbPostData))
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+})
+
+router.put('/:id', (req, res) => {
+    Post.update(
+        {
+            title: req.body.title,
+            body: req.body.body
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }  
+    )
+    .then((dbPostData) => {
+        if (!dbPostData) {
+            res.status(404).json({ message: "No user found with this id" });
+            return;
+        }
+        res.json(dbPostData);
+    })
     .catch((err) => {
         console.log(err);
         res.status(500).json(err);

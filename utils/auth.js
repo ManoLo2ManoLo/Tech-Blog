@@ -14,5 +14,5 @@ const withNoAuth = (req, res, next) => {
     }
 }
   
-module.exports = { withAuth, withNoAuth};
+module.exports = { withAuth, withNoAuth };
   
