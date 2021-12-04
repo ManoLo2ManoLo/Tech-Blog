@@ -1,0 +1,67 @@
+<div class="row margin-top">
+    <div class="col-12 post-section">
+        <div class="row margin-top-sm">
+            <div class="col-12 new-post">
+                <div class="row">
+                    <a href="/profile/{{post.user_id}}" class="post-name">{{post.first_name}} {{post.last_name}} <span class="post-username">@{{post.username}}</a>
+                </div>
+                <br>
+                <div class="row">
+                    <p class="post-title">{{post.title}}</p>
+                </div>
+
+                <div class="row">
+                    <p class="post-body">{{post.body}}</p>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-6">
+                        <p class="post-time">Posted On: {{post.createdAt}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 post-section">
+        <div class="row margin-top-sm">
+            <form class="col-12 new-post comment_form">
+                <div class="row">
+                    <label for="comment_text">Enter a Comment</label>
+                    <textarea id="comment_text" class="input"></textarea>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12 right">
+                            <button type="submit" class="button">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-12 post-section">
+        {{#each post.comments as |comment|}}
+        <div class="row margin-top-sm">
+            <div class="col-12 new-post">
+                <div class="row">
+                    <a href="/profile/{{comment.user_id}}" class="post-name">{{comment.first_name}} {{comment.last_name}} <span class="post-username">@{{comment.username}}</a>
+                </div>
+                <br>
+
+                <div class="row">
+                    <p class="post-body">{{comment.comment_text}}</p>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-6">
+                        <p class="post-time">Posted On: {{comment.createdAt}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<script src="/javascript/comment.js"></script>

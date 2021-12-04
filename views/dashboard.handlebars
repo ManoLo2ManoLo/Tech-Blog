@@ -110,7 +110,11 @@
                             <p class="post-time">Posted On: {{post.createdAt}}</p>
                         </div>
 
-                        <div class="col-6 right">
+                        <div class="col-4 right">
+                            <a href="/post/{{post.id}}">View ({{post.comments.length}}) Comment(s)</a>
+                        </div>
+
+                        <div class="col-2 right">
                             <a href="/dashboard/{{post.id}}">Edit Post</a>
                         </div>
                     </div>

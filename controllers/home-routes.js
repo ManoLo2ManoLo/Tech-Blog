@@ -5,13 +5,32 @@ const { withAuth, withNoAuth } = require('../utils/auth.js');
 
 router.get('/', (req, res) => {
     Post.findAll({
-        attributes: {
-            exclude: ['updatedAt']
-        },
-        include: {
-            model: User,
-            attributes: ['id', 'first_name', 'last_name', 'username']
-        }
+        order: [['createdAt', 'DESC']],
+        attributes: [
+            'id',
+            'user_id',
+            'title',
+            'body',
+            'user_id',
+            [sequelize.literal('(SELECT username FROM user WHERE user.id = post.user_id)'), 'username'],
+            [sequelize.literal('(SELECT first_name FROM user WHERE user.id = post.user_id)'), 'first_name'],
+            [sequelize.literal('(SELECT last_name FROM user WHERE user.id = post.user_id)'), 'last_name'],
+            'createdAt'
+          ],
+          include: [
+            {
+              model: Comment,
+              attributes: [
+                'id', 
+                'comment_text', 
+                'user_id',
+                [sequelize.literal('(SELECT username FROM user WHERE user.id = comments.user_id)'), 'username'],
+                [sequelize.literal('(SELECT first_name FROM user WHERE user.id = comments.user_id)'), 'first_name'],
+                [sequelize.literal('(SELECT last_name FROM user WHERE user.id = comments.user_id)'), 'last_name'],
+                'createdAt'
+              ]
+            }
+          ]
     })
     .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({plain: true}));
@@ -39,7 +58,11 @@ router.get('/dashboard', withAuth, (req, res) => {
         },
         include: {
             model: Post,
-            attributes: ['id', 'title', 'body', 'createdAt']
+            order: [['createdAt', 'DESC']],
+            attributes: ['id', 'title', 'body', 'createdAt'],
+            include: {
+                model: Comment
+            }
         },
         where: {
             id: req.session.user_id
@@ -62,16 +85,32 @@ router.get('/dashboard', withAuth, (req, res) => {
 
 router.get('/dashboard/:id',withAuth, (req, res) => {
     Post.findOne({
-        attributes: {
-            exclude: ['updatedAt']
-        },
-        include: {
-            model: User,
-            attributes: ['id', 'first_name', 'last_name', 'username']
-        },
-        where: {
-            id: req.params.id
-        }
+        order: [['createdAt', 'DESC']],
+        attributes: [
+            'id',
+            'user_id',
+            'title',
+            'body',
+            'user_id',
+            [sequelize.literal('(SELECT username FROM user WHERE user.id = post.user_id)'), 'username'],
+            [sequelize.literal('(SELECT first_name FROM user WHERE user.id = post.user_id)'), 'first_name'],
+            [sequelize.literal('(SELECT last_name FROM user WHERE user.id = post.user_id)'), 'last_name'],
+            'createdAt'
+          ],
+          include: [
+            {
+              model: Comment,
+              attributes: [
+                'id', 
+                'comment_text', 
+                'user_id',
+                [sequelize.literal('(SELECT username FROM user WHERE user.id = comments.user_id)'), 'username'],
+                [sequelize.literal('(SELECT first_name FROM user WHERE user.id = comments.user_id)'), 'first_name'],
+                [sequelize.literal('(SELECT last_name FROM user WHERE user.id = comments.user_id)'), 'last_name'],
+                'createdAt'
+              ]
+            }
+          ]
     })
     .then(dbPostData => {
         if (!dbPostData) {
@@ -116,5 +155,52 @@ router.get('/profile/:id',withAuth, (req, res) => {
         res.status(500).json(err);
     });
 });
+
+router.get('/post/:id', withAuth, (req, res) => {
+    Post.findOne({
+        attributes: [
+            'id',
+            'user_id',
+            'title',
+            'body',
+            'user_id',
+            [sequelize.literal('(SELECT username FROM user WHERE user.id = post.user_id)'), 'username'],
+            [sequelize.literal('(SELECT first_name FROM user WHERE user.id = post.user_id)'), 'first_name'],
+            [sequelize.literal('(SELECT last_name FROM user WHERE user.id = post.user_id)'), 'last_name'],
+            'createdAt'
+        ],
+        include: [
+            {
+                model: Comment,
+                attributes: [
+                    'id', 
+                    'comment_text', 
+                    'user_id',
+                    [sequelize.literal('(SELECT username FROM user WHERE user.id = comments.user_id)'), 'username'],
+                    [sequelize.literal('(SELECT first_name FROM user WHERE user.id = comments.user_id)'), 'first_name'],
+                    [sequelize.literal('(SELECT last_name FROM user WHERE user.id = comments.user_id)'), 'last_name'],
+                    'createdAt'
+                ]
+            }
+        ],
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbPostData => {
+        if (!dbPostData) {
+            res.status(404).json({ message: 'No post found with this id' });
+            return;
+        }
+  
+        const post = dbPostData.get({ plain : true });
+
+        res.render('post-view', { post })
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+})
 
 module.exports = router;

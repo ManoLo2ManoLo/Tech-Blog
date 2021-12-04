@@ -1,16 +1,36 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection');
 const { User, Post, Comment } = require('../../Models')
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
     Post.findAll({
-        attributes: {
-            exclude: ['updatedAt']
-        },
-        include: {
-            model: User,
-            attributes: ['id', 'first_name', 'last_name', 'username']
-        }
+        order: [['createdAt', 'DESC']],
+        attributes: [
+            'id',
+            'user_id',
+            'title',
+            'body',
+            'user_id',
+            [sequelize.literal('(SELECT username FROM user WHERE user.id = post.user_id)'), 'username'],
+            [sequelize.literal('(SELECT first_name FROM user WHERE user.id = post.user_id)'), 'first_name'],
+            [sequelize.literal('(SELECT last_name FROM user WHERE user.id = post.user_id)'), 'last_name'],
+            'createdAt'
+          ],
+          include: [
+            {
+              model: Comment,
+              attributes: [
+                'id', 
+                'comment_text', 
+                'user_id',
+                [sequelize.literal('(SELECT username FROM user WHERE user.id = comments.user_id)'), 'username'],
+                [sequelize.literal('(SELECT first_name FROM user WHERE user.id = comments.user_id)'), 'first_name'],
+                [sequelize.literal('(SELECT last_name FROM user WHERE user.id = comments.user_id)'), 'last_name'],
+                'createdAt'
+              ]
+            }
+          ]
     })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {

@@ -14,7 +14,7 @@
         <div class="row margin-top-sm">
             <div class="col-12 new-post">
                 <div class="row">
-                    <a href="/profile/{{post.user.id}}" class="post-name">{{post.user.first_name}} {{post.user.last_name}} <span class="post-username">@{{post.user.username}}</a>
+                    <a href="/profile/{{post.user_id}}" class="post-name">{{post.first_name}} {{post.last_name}} <span class="post-username">@{{post.username}}</a>
                 </div>
                 <br>
                 <div class="row">
@@ -30,7 +30,7 @@
                     <p class="post-time">Posted On: {{post.createdAt}}</p>
                     </div>
                     <div class="col-6 right">
-                        <button class="button">View Comments</button>
+                        <a href="/post/{{post.id}}">View ({{post.comments.length}})Comment(s)</button>
                     </div>
                 </div>
             </div>
