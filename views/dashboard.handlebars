@@ -1,1 +1,121 @@
-<h1>DashBoard</h1>
+<div class="row margin-top">
+    <div class="col-4">
+        <div class="row">
+            <h2 class="white-text">{{user.first_name}} {{user.last_name}}</h2>
+        </div>
+
+        <div class="row">
+            <h3 class="white-text">@{{user.username}}</h3>
+        </div>
+
+        <div class="row margin-top-sm">
+            <center>
+                <div class="col-9">
+                    <form class="row about_me_form">
+                        <h4 class="white-text">About Me</h4>
+                        <textarea class="input" id="about_me" placeholder="{{user.about_me}}"></textarea>
+                        <button type="submit" class="button">Submit</button>
+                    </form>
+                </div>
+            </center>
+        </div>
+
+        <div class="row margin-top-sm">
+            <center>
+                <div class="col-9">
+                    <h4 class="white-text">About Me</h4>
+                    <p>{{user.about_me}}</p>
+                    <button class="button">Edit About Me</button>
+                </div>
+            </center>
+        </div>
+
+        <div class="row margin-top-sm">
+            <center>
+                <div class="col-9">
+                    <form class="row interests_form">
+                        <h4 class="white-text">Interest</h4>
+                        <textarea class="input" id="interests" placeholder="{{user.interests}}"></textarea>
+                        <button type="submit" class="button">Submit</button>
+                    </form>
+                </div>
+            </center>
+        </div>
+
+        <div class="row margin-top-sm">
+            <center>
+                <div class="col-9">
+                    <h4 class="white-text">Interest</h4>
+                    <p>{{user.interests}}</p>
+                    <button class="button">Edit Interests</button>
+                </div>
+            </center>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <div class="col-12">
+            <div class="row">
+                <center>
+                    <div class="col-6">
+                        <h1 class="white-text">Post a Blog:</h1>
+                    </div>
+                </center>
+            </div>
+
+            {{#if loggedIn}}
+            <div class="row">
+                <form class="blog_post margin-top-sm">
+                    <div class="row">
+                        <input class="input" id="title" placeholder="Blog's Title"></input>
+                    </div>
+
+                    <div class="row">
+                        <textarea class="input" cols="5" id="body" placeholder="Blog's Body"></textarea>
+                    </div>
+
+                    <div class="row">
+                        <button class="btn" type="submit">Submit Blog</button>
+                    </div>
+                </form>
+            </div>
+            {{/if}}
+        </div>
+
+        <div class="col-12 margin-top post-section">
+            <div class="row">
+                <center>
+                    <div class="col-6">
+                        <h1 class="white-text">My Blog Posts:</h1>
+                    </div>
+                </center>
+            </div>
+            {{#each user.posts as |post|}}
+            <div class="row margin-top-sm">
+                <div class="col-12 new-post">
+                    <div class="row">
+                        <p class="post-title">{{post.title}}</p>
+                    </div>
+
+                    <div class="row">
+                        <p class="post-body">{{post.body}}</p>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="post-time">Posted On: {{post.createdAt}}</p>
+                        </div>
+
+                        <div class="col-6 right">
+                            <button class="button">View Comments</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<script src="/javascript/blog_post.js"></script>
+<script src="/javascript/update_profile.js"></script>

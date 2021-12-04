@@ -6,6 +6,10 @@ router.get('/', (req, res) => {
     User.findAll({
         attributes: {
             exclude: ['password']
+        },
+        include: {
+            model: Post,
+            attributes: ['id', 'title', 'body', 'createdAt']
         }
     })
     .then((dbUserData) => res.json(dbUserData))
@@ -74,5 +78,30 @@ router.post("/logout", (req, res) => {
         res.status(404).end();
     }
 });
+
+router.put('/', (req, res) => {
+    User.update(
+        {
+            about_me: req.body.about_me,
+            interests: req.body.interests
+        },
+        {
+            where: {
+                id: req.session.user_id
+            }
+        }  
+    )
+    .then((dbUserData) => {
+        if (!dbUserData) {
+            res.status(404).json({ message: "No user found with this id" });
+            return;
+        }
+        res.json(dbUserData);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+})
 
 module.exports = router;

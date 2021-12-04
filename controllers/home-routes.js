@@ -33,7 +33,28 @@ router.get('/signup', withNoAuth, (req, res) => {
 });
 
 router.get('/dashboard', withAuth, (req, res) => {
-    res.render('dashboard');
+    User.findOne({
+        attributes: {
+            exclude: ['password']
+        },
+        include: {
+            model: Post,
+            attributes: ['id', 'title', 'body', 'createdAt']
+        }
+    })
+    .then(dbUserData => {
+        if (!dbUserData) {
+            res.status(404).json({ message: 'No user found with this id' });
+        }
+
+        const user = dbUserData.get({ plain: true });
+
+        res.render('dashboard', {user});
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 module.exports = router;
