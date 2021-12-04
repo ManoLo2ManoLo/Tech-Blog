@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         },
         include: {
             model: User,
-            attributes: ['first_name', 'last_name', 'username']
+            attributes: ['id', 'first_name', 'last_name', 'username']
         }
     })
     .then(dbPostData => {
@@ -88,5 +88,33 @@ router.get('/dashboard/:id',withAuth, (req, res) => {
         res.status(500).json(err);
     });
 })
+
+router.get('/profile/:id',withAuth, (req, res) => {
+    User.findOne({
+        attributes: {
+            exclude: ['password']
+        },
+        include: {
+            model: Post,
+            attributes: ['id', 'title', 'body', 'createdAt']
+        },
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbUserData => {
+        if (!dbUserData) {
+            res.status(404).json({ message: 'No user found with this id' });
+        }
+
+        const user = dbUserData.get({ plain: true });
+
+        res.render('profilePage', {user});
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
 module.exports = router;
