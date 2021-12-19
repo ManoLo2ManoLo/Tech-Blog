@@ -129,6 +129,10 @@ router.get('/dashboard/:id',withAuth, (req, res) => {
 })
 
 router.get('/profile/:id',withAuth, (req, res) => {
+    if(req.params.id == req.session.user_id) {
+        res.redirect('/dashboard');
+    }
+
     User.findOne({
         attributes: {
             exclude: ['password']
