@@ -24,23 +24,6 @@
     </div>
 
     <div class="col-12 post-section">
-        <div class="row margin-top-sm">
-            <form class="col-12 new-post comment_form">
-                <div class="row">
-                    <label for="comment_text">Enter a Comment</label>
-                    <textarea id="comment_text" class="input"></textarea>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-12 right">
-                            <button type="submit" class="button">Submit</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="col-12 post-section">
         {{#each post.comments as |comment|}}
         <div class="row margin-top-sm">
             <div class="col-12 new-post">
@@ -61,6 +44,23 @@
             </div>
         </div>
         {{/each}}
+    </div>
+
+    <div class="col-12 post-section">
+        <div class="row margin-top-sm">
+            <form class="col-12 new-post comment_form">
+                <div class="row">
+                    <label for="comment_text">Enter a Comment</label>
+                    <textarea id="comment_text" class="input"></textarea>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12 right">
+                            <button type="submit" class="button">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
