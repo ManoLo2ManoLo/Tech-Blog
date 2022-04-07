@@ -2,8 +2,8 @@
 <p align="center">
     <img align="center" src="https://img.shields.io/badge/-JavaScript-000000?style=for-the-badge&logo=JavaScript" alt="JavaScript" />
     <img align="center" src="https://img.shields.io/badge/-CSS3-000000?style=for-the-badge&logo=CSS3" alt="CSS3" />
+    <img align="center" src="https://img.shields.io/badge/-Handlebars-000000?style=for-the-badge&logo=handlebars.js" alt="Handlebars" />
     <img align="center" src="https://img.shields.io/badge/-Bootstrap-000000?style=for-the-badge&logo=bootstrap" alt="Bootstrap" />
-    <img align="center" src="https://img.shields.io/badge/-Materialize-000000?style=for-the-badge" alt="Materialize" />
     <img align="center" src="https://img.shields.io/badge/-Font%20Awesome-000000?style=for-the-badge&logo=font%20awesome" alt="Font Awesome" />
 </p>
 
