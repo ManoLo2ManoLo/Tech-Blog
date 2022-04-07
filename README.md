@@ -1,7 +1,13 @@
 # Tech-Blog
+<p align="center">
+    <img align="center" src="https://img.shields.io/badge/-JavaScript-000000?style=for-the-badge&logo=JavaScript" alt="JavaScript" />
+    <img align="center" src="https://img.shields.io/badge/-CSS3-000000?style=for-the-badge&logo=CSS3" alt="CSS3" />
+    <img align="center" src="https://img.shields.io/badge/-Bootstrap-000000?style=for-the-badge&logo=bootstrap" alt="Bootstrap" />
+    <img align="center" src="https://img.shields.io/badge/-Materialize-000000?style=for-the-badge" alt="Materialize" />
+    <img align="center" src="https://img.shields.io/badge/-Font%20Awesome-000000?style=for-the-badge&logo=font%20awesome" alt="Font Awesome" />
+</p>
 
-## Link Section
-Link to Github Repository: https://github.com/ManoLo2ManoLo/Tech-Blog.git <br />
+## Link(s)
 Link to Application: https://manolo-tech-blog.herokuapp.com/dashboard
 
 ## Table of Contents
@@ -14,6 +20,17 @@ Link to Application: https://manolo-tech-blog.herokuapp.com/dashboard
 Tech Blog is an a social media type application. When a user first loads up the application, they are presented with past blog posts. If they try to click on a user's profile or view post's comments, they are redirected to the log in page. While a user is not logged in there is a home button that will take you to the post list, there are also login and sign up button. When you are in the log in page, you have to login with the email and password you provided when you signed up. If not you can create an account with you first name, last name, username, email, password, and verify the password. When you create an account or successfully sign in, you are redirected into the homepage as a logged in user. Meaning the navbar changed from home, login, and sign up to home dashboard and log out.
 
 As a logged in user, you are able to click on a user's name to view their page, where you can see their a short intro to themselves, as well as past blog posts. If the user choose to press to view a post's comments, they are able to post a comment as well as see other users comment. If the user clicks on dashboard, they are redirected to their page where they can edit their about me, and intrerest. They are also able to make a blog post, and view, delete or edit their past post. Lastly if the user wanted to, they can just log out where they will need to sign in to have access to most features of the application.
+
+## Clone Repository
+* git clone https://github.com/ManoLo2ManoLo/Tech-Blog.git
+
+## Install Dependencies
+* All NPM packages required for this application (bcrypt, connect-session-sequelize, dotenv, express, express-handlebars, express-session, mysql2, sequelize) are already listed as dependencies in the package.json file. Run the
+command 'npm i' command in your terminal at the root directory level to install the packages.
+* Ensure you have Node.js installed on your machine. The budget tracker application will be invoked by entering node server.js in the command line.
+
+## Start Application
+* You will see the App running on port 3001! in the console. You can then view the app on http://localhost:3001/.
 
 ## Screenshot
 In this image, you can see what a user sees when they first log in. A list of all the previous post that were made. You are viewing this as a first time viewer, who has yet to make an account.
@@ -34,28 +51,14 @@ In this image, you can see how the user is able to edit the post.
 And if a logged in user decide to leave a comment, the user can view comments.
 ![Screenshot (487)](https://user-images.githubusercontent.com/88364269/146678804-d6a20ef0-080b-47e1-b8a0-a395a2cf0a79.png)
 
-## Credits
-This application was typed and revised by Manuel Canas-Menendez (ManoLo2ManoLo).
+## Credit
+This application was typed and revised Manuel Canas-Menendez (ManoLo2ManoLo). <br />
+
+* [Github](https://github.com/ManoLo2ManoLo)
+* [Portfolio](https://manolo2manolo.github.io/React-Portfolio/)
+* [LinkedIn](https://www.linkedin.com/in/manuel-canas-menendez-33354b21b/)
 
 ## License
-MIT License
-
-Copyright (c) 2021 Manuel Canas-Menendez
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+<p align="center">
+    <img align="center" src="https://img.shields.io/github/license/ManoLo2ManoLo/Tech-Blog?style=for-the-badge" alt="license" />
+</p>
