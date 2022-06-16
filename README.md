@@ -11,13 +11,21 @@
 Link to Application: https://manolo-tech-blog.herokuapp.com/dashboard
 
 ## Table of Contents
-* [Description](#description)
+* [Features](#features)
+* [User Story](#user-story)
 * [Screenshot](#screenshot)
 * [Credits](#credits)
 * [License](#license)
 
-## Description
-Tech Blog is an a social media type application. When a user first loads up the application, they are presented with past blog posts. If they try to click on a user's profile or view post's comments, they are redirected to the log in page. While a user is not logged in there is a home button that will take you to the post list, there are also login and sign up button. When you are in the log in page, you have to login with the email and password you provided when you signed up. If not you can create an account with you first name, last name, username, email, password, and verify the password. When you create an account or successfully sign in, you are redirected into the homepage as a logged in user. Meaning the navbar changed from home, login, and sign up to home dashboard and log out.
+## Features
+    1. User can create an account or login.
+    2. User can create a post, or comment on their/other's post.
+    3. User can edit a short description of themselves on their dashboard.
+    4. User can view other's profile.
+    5. User can delete/edit past posts that they created.
+
+## User Story
+As a user looking for a social media forum that is tech related. With little option for social media platform, tech blog is perfect for all tech conversation needs. This application is an a social media type application. When a user first loads up the application, they are presented with past blog posts. If they try to click on a user's profile or view post's comments, they are redirected to the log in page. While a user is not logged in there is a home button that will take you to the post list, there are also login and sign up button. When you are in the log in page, you have to login with the email and password you provided when you signed up. If not you can create an account with you first name, last name, username, email, password, and verify the password. When you create an account or successfully sign in, you are redirected into the homepage as a logged in user. Meaning the navbar changed from home, login, and sign up to home dashboard and log out.
 
 As a logged in user, you are able to click on a user's name to view their page, where you can see their a short intro to themselves, as well as past blog posts. If the user choose to press to view a post's comments, they are able to post a comment as well as see other users comment. If the user clicks on dashboard, they are redirected to their page where they can edit their about me, and intrerest. They are also able to make a blog post, and view, delete or edit their past post. Lastly if the user wanted to, they can just log out where they will need to sign in to have access to most features of the application.
 
